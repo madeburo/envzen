@@ -1,0 +1,32 @@
+{
+  "name": "@envguard/cli",
+  "version": "0.1.0",
+  "description": "CLI tool for envguard — sync, check, init",
+  "type": "module",
+  "bin": {
+    "envguard": "./dist/index.mjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --out-dir dist",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@envguard/core": "workspace:*",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsup": "^8.0.0"
+  }
+}
