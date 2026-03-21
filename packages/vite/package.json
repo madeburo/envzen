@@ -1,6 +1,6 @@
 {
-  "name": "@envzen/vite",
-  "version": "0.1.1",
+  "name": "envzen-vite",
+  "version": "0.1.2",
   "description": "Vite adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envzen/core": "workspace:*"
+    "envzen-core": "workspace:*"
   },
   "peerDependencies": {
     "vite": ">=5.0.0"

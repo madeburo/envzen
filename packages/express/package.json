@@ -1,6 +1,6 @@
 {
-  "name": "@envzen/express",
-  "version": "0.1.1",
+  "name": "envzen-express",
+  "version": "0.1.2",
   "description": "Express/Fastify adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envzen/core": "workspace:*"
+    "envzen-core": "workspace:*"
   },
   "peerDependencies": {
     "express": ">=4.0.0"

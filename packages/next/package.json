@@ -1,6 +1,6 @@
 {
-  "name": "@envzen/next",
-  "version": "0.1.1",
+  "name": "envzen-next",
+  "version": "0.1.2",
   "description": "Next.js adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envzen/core": "workspace:*"
+    "envzen-core": "workspace:*"
   },
   "peerDependencies": {
     "next": ">=15.0.0"

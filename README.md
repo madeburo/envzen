@@ -1,7 +1,6 @@
 # EnvZen
 
-[![npm](https://img.shields.io/npm/v/@envzen/core)](https://www.npmjs.com/package/@envzen/core)
-[![CI](https://img.shields.io/github/actions/workflow/status/madeburo/envzen/ci.yml?label=CI)](https://github.com/madeburo/envzen/actions)
+[![npm](https://img.shields.io/npm/v/envzen-core)](https://www.npmjs.com/package/envzen-core)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5%2B-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-f69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -20,34 +19,34 @@ Type-safe environment variable validation for TypeScript/Node.js. Validates `pro
 
 | Package | Description |
 |---|---|
-| `@envzen/core` | Validation engine, types, masker, printer |
-| `@envzen/cli` | `envzen check / sync / init` CLI |
-| `@envzen/express` | Express / Fastify middleware |
-| `@envzen/vite` | Vite plugin |
-| `@envzen/next` | Next.js `withEnvGuard()` wrapper |
-| `@envzen/nestjs` | NestJS `EnvGuardModule.forRoot()` |
+| `envzen-core` | Validation engine, types, masker, printer |
+| `envzen-cli` | `envzen check / sync / init` CLI |
+| `envzen-express` | Express / Fastify middleware |
+| `envzen-vite` | Vite plugin |
+| `envzen-next` | Next.js `withEnvGuard()` wrapper |
+| `envzen-nestjs` | NestJS `EnvGuardModule.forRoot()` |
 
 ## Installation
 
 ```bash
 # Core only
-npm install @envzen/core
+npm install envzen-core
 
 # With a framework adapter
-npm install @envzen/core @envzen/express
-npm install @envzen/core @envzen/vite
-npm install @envzen/core @envzen/next
-npm install @envzen/core @envzen/nestjs
+npm install envzen-core envzen-express
+npm install envzen-core envzen-vite
+npm install envzen-core envzen-next
+npm install envzen-core envzen-nestjs
 
 # CLI (global or dev dependency)
-npm install -g @envzen/cli
+npm install -g envzen-cli
 ```
 
 ## Quick Start
 
 ```ts
 // env.ts
-import { createEnv } from '@envzen/core'
+import { createEnv } from 'envzen-core'
 
 export const env = createEnv({
   NODE_ENV: {
@@ -116,7 +115,7 @@ console.log(JSON.stringify(env)) // DATABASE_URL and API_KEY → "[REDACTED]"
 
 ```ts
 import express from 'express'
-import { envGuardMiddleware } from '@envzen/express'
+import { envGuardMiddleware } from 'envzen-express'
 import { schema } from './env.js'
 
 const app = express()
@@ -127,7 +126,7 @@ app.use(envGuardMiddleware(schema))
 
 ```ts
 // vite.config.ts
-import { envGuardPlugin } from '@envzen/vite'
+import { envGuardPlugin } from 'envzen-vite'
 import { schema } from './env.js'
 
 export default {
@@ -139,7 +138,7 @@ export default {
 
 ```ts
 // next.config.ts
-import { withEnvGuard } from '@envzen/next'
+import { withEnvGuard } from 'envzen-next'
 import { schema } from './env.js'
 
 export default withEnvGuard({ /* your next config */ }, schema)
@@ -148,7 +147,7 @@ export default withEnvGuard({ /* your next config */ }, schema)
 ### NestJS
 
 ```ts
-import { EnvGuardModule } from '@envzen/nestjs'
+import { EnvGuardModule } from 'envzen-nestjs'
 import { schema } from './env.js'
 
 @Module({
@@ -179,7 +178,7 @@ envzen check --ci
 ## Error Handling
 
 ```ts
-import { createEnv, EnvValidationError } from '@envzen/core'
+import { createEnv, EnvValidationError } from 'envzen-core'
 
 try {
   const env = createEnv(schema)

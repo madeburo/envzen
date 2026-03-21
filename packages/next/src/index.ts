@@ -1,5 +1,5 @@
-import { createEnv } from '@envzen/core'
-import type { Schema } from '@envzen/core'
+import { createEnv } from 'envzen-core'
+import type { Schema } from 'envzen-core'
 
 // Minimal NextConfig type compatible with next.config.ts
 // Using a structural type so `next` doesn't need to be installed at type-check time

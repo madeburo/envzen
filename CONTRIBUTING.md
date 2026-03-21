@@ -21,15 +21,15 @@ pnpm test
 
 ```
 packages/
-  core/     # @envzen/core — validation engine (Zod-based)
-  cli/      # @envzen/cli — check / sync / init commands
-  express/  # @envzen/express — Express/Fastify middleware
-  vite/     # @envzen/vite — Vite plugin
-  next/     # @envzen/next — Next.js withEnvGuard() wrapper
-  nestjs/   # @envzen/nestjs — NestJS EnvGuardModule
+  core/     # envzen-core — validation engine (Zod-based)
+  cli/      # envzen-cli — check / sync / init commands
+  express/  # envzen-express — Express/Fastify middleware
+  vite/     # envzen-vite — Vite plugin
+  next/     # envzen-next — Next.js withEnvGuard() wrapper
+  nestjs/   # envzen-nestjs — NestJS EnvGuardModule
 ```
 
-All business logic lives in `@envzen/core`. Adapter packages are thin wrappers that call `createEnv()` and re-throw on failure — do not duplicate validation logic in adapters.
+All business logic lives in `envzen-core`. Adapter packages are thin wrappers that call `createEnv()` and re-throw on failure — do not duplicate validation logic in adapters.
 
 ## Common Commands
 
@@ -40,8 +40,8 @@ pnpm test:coverage   # Run tests with coverage
 pnpm lint            # Type-check (no emit)
 
 # Per-package
-pnpm -F @envzen/core test
-pnpm -F @envzen/core build
+pnpm -F envzen-core test
+pnpm -F envzen-core build
 ```
 
 ## Conventions

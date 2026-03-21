@@ -1,6 +1,6 @@
 {
-  "name": "@envzen/nestjs",
-  "version": "0.1.1",
+  "name": "envzen-nestjs",
+  "version": "0.1.2",
   "description": "NestJS adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envzen/core": "workspace:*"
+    "envzen-core": "workspace:*"
   },
   "peerDependencies": {
     "@nestjs/common": ">=10.0.0",
