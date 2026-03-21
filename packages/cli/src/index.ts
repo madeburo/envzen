@@ -25,7 +25,7 @@ program
   .option('--schema <path>', 'Path to the schema file (default: ./env.ts)')
   .action(async (opts: { schema?: string }) => {
     const { syncCommand } = await import('./commands/sync.js')
-    await syncCommand({ schema: opts.schema })
+    await syncCommand(opts.schema ? { schema: opts.schema } : {})
   })
 
 // ── check ─────────────────────────────────────────────────────────────────────
@@ -37,7 +37,10 @@ program
   .option('--ci', 'Suppress interactive prompts and use plain-text output')
   .action(async (opts: { schema?: string; env?: string; ci?: boolean }) => {
     const { checkCommand } = await import('./commands/check.js')
-    await checkCommand({ schema: opts.schema, env: opts.env, ci: opts.ci ?? false })
+    const checkOpts: { ci: boolean; schema?: string; env?: string } = { ci: opts.ci ?? false }
+    if (opts.schema) checkOpts.schema = opts.schema
+    if (opts.env) checkOpts.env = opts.env
+    await checkCommand(checkOpts)
   })
 
 program.parse()
