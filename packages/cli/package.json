@@ -1,13 +1,13 @@
 {
   "name": "envzen-cli",
-  "version": "0.1.2",
+  "version": "0.1.10",
   "description": "CLI tool for envzen — sync, check, init",
   "license": "MIT",
   "author": "EnvZen Contributors",
   "homepage": "https://github.com/madeburo/envzen/tree/main/packages/cli#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envzen.git",
+    "url": "git+https://github.com/madeburo/envzen.git",
     "directory": "packages/cli"
   },
   "bugs": {
@@ -28,14 +28,10 @@
   },
   "type": "module",
   "bin": {
-    "envzen": "./dist/index.js"
+    "envzen": "dist/index.cjs"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.cts",
   "files": [
     "dist"
   ],

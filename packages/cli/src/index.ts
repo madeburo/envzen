@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { Command } from 'commander'
 
 const program = new Command()
@@ -6,7 +5,7 @@ const program = new Command()
 program
   .name('envzen')
   .description('Type-safe environment variable validation CLI')
-  .version('0.1.2')
+  .version('0.1.10')
 
 // ── init ──────────────────────────────────────────────────────────────────────
 program
