@@ -1,6 +1,6 @@
 import { writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { printEnvExample } from '@envzen/core'
+import { printEnvExample } from 'envzen-core'
 import { resolveSchema } from '../utils/resolveSchema.js'
 
 export interface SyncOptions {

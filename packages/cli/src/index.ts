@@ -6,7 +6,7 @@ const program = new Command()
 program
   .name('envzen')
   .description('Type-safe environment variable validation CLI')
-  .version('0.1.1')
+  .version('0.1.2')
 
 // ── init ──────────────────────────────────────────────────────────────────────
 program

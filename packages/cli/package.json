@@ -1,6 +1,6 @@
 {
-  "name": "@envzen/cli",
-  "version": "0.1.1",
+  "name": "envzen-cli",
+  "version": "0.1.3",
   "description": "CLI tool for envzen — sync, check, init",
   "license": "MIT",
   "author": "EnvZen Contributors",
@@ -28,7 +28,7 @@
   },
   "type": "module",
   "bin": {
-    "envzen": "./dist/index.mjs"
+    "envzen": "./dist/index.js"
   },
   "exports": {
     ".": {
@@ -46,7 +46,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envzen/core": "workspace:*",
+    "envzen-core": "workspace:*",
     "commander": "^12.1.0"
   },
   "devDependencies": {

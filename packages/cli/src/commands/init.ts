@@ -7,7 +7,7 @@ export interface InitOptions {
   ci: boolean
 }
 
-const ENV_TS_TEMPLATE = `import { createEnv } from '@envzen/core'
+const ENV_TS_TEMPLATE = `import { createEnv } from 'envzen-core'
 
 export const env = createEnv({
   NODE_ENV: {
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g @envzen/cli
+      - run: npm install -g envzen-cli
       - run: envzen check
 `
 

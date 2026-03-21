@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Schema, FieldType } from '@envzen/core'
-import { buildZodSchema } from '@envzen/core'
+import type { Schema, FieldType } from 'envzen-core'
+import { buildZodSchema } from 'envzen-core'
 import { resolveSchema } from '../utils/resolveSchema.js'
 
 export interface CheckOptions {

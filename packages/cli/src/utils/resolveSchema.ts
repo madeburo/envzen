@@ -1,6 +1,6 @@
 import { resolve, extname } from 'node:path'
 import { existsSync } from 'node:fs'
-import type { Schema } from '@envzen/core'
+import type { Schema } from 'envzen-core'
 
 const ALLOWED_EXTENSIONS = new Set(['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'])
 
