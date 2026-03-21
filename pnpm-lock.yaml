@@ -23,7 +23,7 @@ importers:
 
   packages/cli:
     dependencies:
-      '@envguard/core':
+      '@envshield/core':
         specifier: workspace:*
         version: link:../core
       commander:
@@ -55,7 +55,7 @@ importers:
 
   packages/express:
     dependencies:
-      '@envguard/core':
+      '@envshield/core':
         specifier: workspace:*
         version: link:../core
       express:
@@ -68,7 +68,7 @@ importers:
 
   packages/nestjs:
     dependencies:
-      '@envguard/core':
+      '@envshield/core':
         specifier: workspace:*
         version: link:../core
       '@nestjs/common':
@@ -84,7 +84,7 @@ importers:
 
   packages/next:
     dependencies:
-      '@envguard/core':
+      '@envshield/core':
         specifier: workspace:*
         version: link:../core
       next:
@@ -97,7 +97,7 @@ importers:
 
   packages/vite:
     dependencies:
-      '@envguard/core':
+      '@envshield/core':
         specifier: workspace:*
         version: link:../core
       vite:

@@ -7,7 +7,7 @@ export interface InitOptions {
   ci: boolean
 }
 
-const ENV_TS_TEMPLATE = `import { createEnv } from '@envshield/core'
+const ENV_TS_TEMPLATE = `import { createEnv } from '@envzen/core'
 
 export const env = createEnv({
   NODE_ENV: {
@@ -41,21 +41,21 @@ export const env = createEnv({
 })
 `
 
-const GITHUB_WORKFLOW_TEMPLATE = `name: envshield check
+const GITHUB_WORKFLOW_TEMPLATE = `name: envzen check
 
 on:
   pull_request:
 
 jobs:
-  envshield:
+  envzen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g @envshield/cli
-      - run: envshield check
+      - run: npm install -g @envzen/cli
+      - run: envzen check
 `
 
 function prompt(question: string): Promise<boolean> {
@@ -93,7 +93,7 @@ export async function initCommand(opts: InitOptions): Promise<void> {
   // With --ci, also generate GitHub Actions workflow
   if (opts.ci) {
     const workflowDir = join(cwd, '.github', 'workflows')
-    const workflowPath = join(workflowDir, 'envshield.yml')
+    const workflowPath = join(workflowDir, 'envzen.yml')
     await mkdir(workflowDir, { recursive: true })
     await writeFile(workflowPath, GITHUB_WORKFLOW_TEMPLATE, 'utf8')
     process.stdout.write(`Created ${workflowPath}\n`)

@@ -1,20 +1,20 @@
 {
-  "name": "@envshield/cli",
+  "name": "@envzen/cli",
   "version": "0.1.1",
-  "description": "CLI tool for envshield — sync, check, init",
+  "description": "CLI tool for envzen — sync, check, init",
   "license": "MIT",
-  "author": "EnvShield Contributors",
-  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/cli#readme",
+  "author": "EnvZen Contributors",
+  "homepage": "https://github.com/madeburo/envzen/tree/main/packages/cli#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envshield.git",
+    "url": "https://github.com/madeburo/envzen.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envshield/issues"
+    "url": "https://github.com/madeburo/envzen/issues"
   },
   "keywords": [
-    "envshield",
+    "envzen",
     "cli",
     "env",
     "environment",
@@ -28,7 +28,7 @@
   },
   "type": "module",
   "bin": {
-    "envshield": "./dist/index.mjs"
+    "envzen": "./dist/index.mjs"
   },
   "exports": {
     ".": {
@@ -46,7 +46,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envshield/core": "workspace:*",
+    "@envzen/core": "workspace:*",
     "commander": "^12.1.0"
   },
   "devDependencies": {

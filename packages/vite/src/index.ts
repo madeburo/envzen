@@ -1,5 +1,5 @@
-import { createEnv } from '@envshield/core'
-import type { Schema } from '@envshield/core'
+import { createEnv } from '@envzen/core'
+import type { Schema } from '@envzen/core'
 import type { Plugin } from 'vite'
 
 /**
@@ -8,7 +8,7 @@ import type { Plugin } from 'vite'
  */
 export function envGuardPlugin(schema: Schema): Plugin {
   return {
-    name: 'envshield',
+    name: 'envzen',
     buildStart() {
       createEnv(schema)
     },

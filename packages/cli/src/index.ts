@@ -4,7 +4,7 @@ import { Command } from 'commander'
 const program = new Command()
 
 program
-  .name('envshield')
+  .name('envzen')
   .description('Type-safe environment variable validation CLI')
   .version('0.1.1')
 

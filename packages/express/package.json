@@ -1,20 +1,20 @@
 {
-  "name": "@envshield/express",
+  "name": "@envzen/express",
   "version": "0.1.1",
-  "description": "Express/Fastify adapter for envshield",
+  "description": "Express/Fastify adapter for envzen",
   "license": "MIT",
-  "author": "EnvShield Contributors",
-  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/express#readme",
+  "author": "EnvZen Contributors",
+  "homepage": "https://github.com/madeburo/envzen/tree/main/packages/express#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envshield.git",
+    "url": "https://github.com/madeburo/envzen.git",
     "directory": "packages/express"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envshield/issues"
+    "url": "https://github.com/madeburo/envzen/issues"
   },
   "keywords": [
-    "envshield",
+    "envzen",
     "express",
     "fastify",
     "middleware",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envshield/core": "workspace:*"
+    "@envzen/core": "workspace:*"
   },
   "peerDependencies": {
     "express": ">=4.0.0"

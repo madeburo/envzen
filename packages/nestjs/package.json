@@ -1,20 +1,20 @@
 {
-  "name": "@envshield/nestjs",
+  "name": "@envzen/nestjs",
   "version": "0.1.1",
-  "description": "NestJS adapter for envshield",
+  "description": "NestJS adapter for envzen",
   "license": "MIT",
-  "author": "EnvShield Contributors",
-  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/nestjs#readme",
+  "author": "EnvZen Contributors",
+  "homepage": "https://github.com/madeburo/envzen/tree/main/packages/nestjs#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envshield.git",
+    "url": "https://github.com/madeburo/envzen.git",
     "directory": "packages/nestjs"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envshield/issues"
+    "url": "https://github.com/madeburo/envzen/issues"
   },
   "keywords": [
-    "envshield",
+    "envzen",
     "nestjs",
     "nest",
     "env",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envshield/core": "workspace:*"
+    "@envzen/core": "workspace:*"
   },
   "peerDependencies": {
     "@nestjs/common": ">=10.0.0",

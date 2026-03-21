@@ -1,17 +1,17 @@
 {
-  "name": "@envshield/core",
+  "name": "@envzen/core",
   "version": "0.1.1",
   "description": "Type-safe environment variable validation engine",
   "license": "MIT",
-  "author": "EnvShield Contributors",
-  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/core#readme",
+  "author": "EnvZen Contributors",
+  "homepage": "https://github.com/madeburo/envzen/tree/main/packages/core#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envshield.git",
+    "url": "https://github.com/madeburo/envzen.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envshield/issues"
+    "url": "https://github.com/madeburo/envzen/issues"
   },
   "keywords": [
     "env",

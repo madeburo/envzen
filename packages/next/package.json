@@ -1,20 +1,20 @@
 {
-  "name": "@envshield/next",
+  "name": "@envzen/next",
   "version": "0.1.1",
-  "description": "Next.js adapter for envshield",
+  "description": "Next.js adapter for envzen",
   "license": "MIT",
-  "author": "EnvShield Contributors",
-  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/next#readme",
+  "author": "EnvZen Contributors",
+  "homepage": "https://github.com/madeburo/envzen/tree/main/packages/next#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envshield.git",
+    "url": "https://github.com/madeburo/envzen.git",
     "directory": "packages/next"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envshield/issues"
+    "url": "https://github.com/madeburo/envzen/issues"
   },
   "keywords": [
-    "envshield",
+    "envzen",
     "nextjs",
     "next",
     "env",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envshield/core": "workspace:*"
+    "@envzen/core": "workspace:*"
   },
   "peerDependencies": {
     "next": ">=15.0.0"

@@ -1,5 +1,5 @@
-import { createEnv } from '@envshield/core'
-import type { Schema } from '@envshield/core'
+import { createEnv } from '@envzen/core'
+import type { Schema } from '@envzen/core'
 
 /**
  * Returns an Express/Fastify-compatible middleware that validates environment
