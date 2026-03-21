@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { envGuardMiddleware } from './index.js'
-import { EnvValidationError } from '@envguard/core'
+import { EnvValidationError } from 'envzen-core'
 
 describe('envGuardMiddleware', () => {
   const originalEnv = process.env
@@ -13,7 +13,7 @@ describe('envGuardMiddleware', () => {
     process.env = originalEnv
   })
 
-  it('returns a function (middleware)', () => {
+  it('returns a middleware function', () => {
     const mw = envGuardMiddleware({})
     expect(typeof mw).toBe('function')
   })
@@ -55,17 +55,11 @@ describe('envGuardMiddleware', () => {
 
   it('only validates once across multiple requests', () => {
     process.env['API_KEY'] = 'secret'
-    const schema = { API_KEY: { type: 'string' as const, required: true } }
-    const mw = envGuardMiddleware(schema)
+    const mw = envGuardMiddleware({ API_KEY: { type: 'string' as const, required: true } })
     const next = vi.fn()
-
-    // First request — validates
     mw({}, {}, next)
-    // Second request — skips validation
     mw({}, {}, next)
-
     expect(next).toHaveBeenCalledTimes(2)
-    // Both calls should be without error
     expect(next.mock.calls[0]).toEqual([])
     expect(next.mock.calls[1]).toEqual([])
   })

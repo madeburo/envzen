@@ -75,10 +75,10 @@ describe('initCommand', () => {
   it('--ci generates GitHub Actions workflow file', async () => {
     await initCommand({ ci: true })
 
-    const workflowPath = join(tmpDir, '.github', 'workflows', 'envguard.yml')
+    const workflowPath = join(tmpDir, '.github', 'workflows', 'envzen.yml')
     expect(existsSync(workflowPath)).toBe(true)
     const content = readFileSync(workflowPath, 'utf8')
-    expect(content).toContain('envguard check')
-    expect(stdoutSpy).toHaveBeenCalledWith(expect.stringContaining('envguard.yml'))
+    expect(content).toContain('envzen check')
+    expect(stdoutSpy).toHaveBeenCalledWith(expect.stringContaining('envzen.yml'))
   })
 })
