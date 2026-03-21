@@ -2,6 +2,28 @@
   "name": "@envguard/next",
   "version": "0.1.1",
   "description": "Next.js adapter for envguard",
+  "license": "MIT",
+  "author": "EnvGuard Contributors",
+  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/next#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madeburo/envguard.git",
+    "directory": "packages/next"
+  },
+  "bugs": {
+    "url": "https://github.com/madeburo/envguard/issues"
+  },
+  "keywords": [
+    "envguard",
+    "nextjs",
+    "next",
+    "env",
+    "validation",
+    "config"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "type": "module",
   "exports": {
     ".": {

@@ -2,6 +2,28 @@
   "name": "@envguard/vite",
   "version": "0.1.1",
   "description": "Vite adapter for envguard",
+  "license": "MIT",
+  "author": "EnvGuard Contributors",
+  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/vite#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madeburo/envguard.git",
+    "directory": "packages/vite"
+  },
+  "bugs": {
+    "url": "https://github.com/madeburo/envguard/issues"
+  },
+  "keywords": [
+    "envguard",
+    "vite",
+    "plugin",
+    "env",
+    "validation",
+    "build"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "type": "module",
   "exports": {
     ".": {

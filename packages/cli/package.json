@@ -2,6 +2,30 @@
   "name": "@envguard/cli",
   "version": "0.1.1",
   "description": "CLI tool for envguard — sync, check, init",
+  "license": "MIT",
+  "author": "EnvGuard Contributors",
+  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madeburo/envguard.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/madeburo/envguard/issues"
+  },
+  "keywords": [
+    "envguard",
+    "cli",
+    "env",
+    "environment",
+    "validation",
+    "dotenv",
+    "sync",
+    "check"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "type": "module",
   "bin": {
     "envguard": "./dist/index.mjs"

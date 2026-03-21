@@ -2,6 +2,28 @@
   "name": "@envguard/nestjs",
   "version": "0.1.1",
   "description": "NestJS adapter for envguard",
+  "license": "MIT",
+  "author": "EnvGuard Contributors",
+  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/nestjs#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madeburo/envguard.git",
+    "directory": "packages/nestjs"
+  },
+  "bugs": {
+    "url": "https://github.com/madeburo/envguard/issues"
+  },
+  "keywords": [
+    "envguard",
+    "nestjs",
+    "nest",
+    "env",
+    "validation",
+    "module"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "type": "module",
   "exports": {
     ".": {
