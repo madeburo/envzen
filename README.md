@@ -1,6 +1,6 @@
 # EnvZen
 
-![EnvZen](./envzen.png)
+![EnvZen](./envzen.webp)
 
 [![npm](https://img.shields.io/npm/v/envzen-core)](https://www.npmjs.com/package/envzen-core)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
