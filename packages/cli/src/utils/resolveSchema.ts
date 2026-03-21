@@ -1,6 +1,8 @@
-import { resolve } from 'node:path'
+import { resolve, extname } from 'node:path'
 import { existsSync } from 'node:fs'
 import type { Schema } from '@envguard/core'
+
+const ALLOWED_EXTENSIONS = new Set(['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'])
 
 /**
  * Resolves and imports the user's schema file.
@@ -11,6 +13,14 @@ export async function resolveSchema(schemaFlag?: string): Promise<Schema> {
   const schemaPath = schemaFlag
     ? resolve(process.cwd(), schemaFlag)
     : resolve(process.cwd(), 'env.ts')
+
+  const ext = extname(schemaPath).toLowerCase()
+  if (!ALLOWED_EXTENSIONS.has(ext)) {
+    process.stderr.write(
+      `envguard: unsupported schema file extension "${ext}".\n  Allowed: ${[...ALLOWED_EXTENSIONS].join(', ')}\n`
+    )
+    process.exit(1)
+  }
 
   if (!existsSync(schemaPath)) {
     process.stderr.write(

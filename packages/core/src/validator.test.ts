@@ -219,3 +219,66 @@ describe('validate — error collects all failures', () => {
     expect(vars).toContain('B')
   })
 })
+
+describe('validate — sensitive field error redaction', () => {
+  it('redacts the actual value from boolean validation error messages', () => {
+    let error: EnvValidationError | undefined
+    try {
+      validate(
+        { SECRET: { type: 'boolean', required: true, sensitive: true } },
+        { SECRET: 'my-secret-password' }
+      )
+    } catch (e) {
+      error = e as EnvValidationError
+    }
+    expect(error).toBeInstanceOf(EnvValidationError)
+    expect(error!.message).not.toContain('my-secret-password')
+    expect(error!.failures[0]?.reason).not.toContain('my-secret-password')
+    expect(error!.failures[0]?.reason).toContain('[REDACTED]')
+  })
+
+  it('redacts the actual value from enum validation error messages', () => {
+    let error: EnvValidationError | undefined
+    try {
+      validate(
+        { API_KEY: { type: 'enum', values: ['a', 'b'], required: true, sensitive: true } },
+        { API_KEY: 'super-secret-key' }
+      )
+    } catch (e) {
+      error = e as EnvValidationError
+    }
+    expect(error).toBeInstanceOf(EnvValidationError)
+    expect(error!.message).not.toContain('super-secret-key')
+  })
+
+  it('does not redact non-sensitive field values in errors', () => {
+    let error: EnvValidationError | undefined
+    try {
+      validate(
+        { FLAG: { type: 'boolean', required: true } },
+        { FLAG: 'not-a-bool' }
+      )
+    } catch (e) {
+      error = e as EnvValidationError
+    }
+    expect(error).toBeInstanceOf(EnvValidationError)
+    expect(error!.failures[0]?.reason).toContain('not-a-bool')
+  })
+})
+
+describe('buildZodSchema — caching', () => {
+  it('returns the same Zod schema for the same schema object reference', () => {
+    const schema = { PORT: { type: 'port' as const, required: true } }
+    const first = buildZodSchema(schema)
+    const second = buildZodSchema(schema)
+    expect(first).toBe(second)
+  })
+
+  it('returns different Zod schemas for different schema objects', () => {
+    const schema1 = { PORT: { type: 'port' as const, required: true } }
+    const schema2 = { PORT: { type: 'port' as const, required: true } }
+    const first = buildZodSchema(schema1)
+    const second = buildZodSchema(schema2)
+    expect(first).not.toBe(second)
+  })
+})

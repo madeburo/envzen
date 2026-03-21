@@ -1,6 +1,6 @@
 {
   "name": "@envguard/next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Next.js adapter for envguard",
   "type": "module",
   "exports": {

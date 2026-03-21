@@ -1,6 +1,6 @@
 {
   "name": "@envguard/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type-safe environment variable validation engine",
   "type": "module",
   "exports": {

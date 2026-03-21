@@ -1,7 +1,7 @@
 {
   "name": "envguard",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type-safe environment variable validation library",
   "scripts": {
     "build": "pnpm -r run build",

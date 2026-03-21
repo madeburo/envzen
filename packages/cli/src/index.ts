@@ -6,7 +6,7 @@ const program = new Command()
 program
   .name('envguard')
   .description('Type-safe environment variable validation CLI')
-  .version('0.1.0')
+  .version('0.1.1')
 
 // ── init ──────────────────────────────────────────────────────────────────────
 program

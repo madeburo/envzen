@@ -1,6 +1,6 @@
 {
   "name": "@envguard/vite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vite adapter for envguard",
   "type": "module",
   "exports": {

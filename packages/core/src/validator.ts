@@ -4,11 +4,17 @@ import { EnvValidationError, formatErrors } from './types'
 
 export { formatErrors }
 
+/** WeakMap cache: avoids rebuilding the Zod schema when the same schema object is reused. */
+const schemaCache = new WeakMap<Schema, z.ZodObject<Record<string, z.ZodTypeAny>>>()
+
 /**
  * Builds a Zod object schema from an envguard Schema definition.
  * Applies coercion rules per field type and handles required/default/optional.
+ * Results are cached per schema object reference via WeakMap.
  */
 export function buildZodSchema(schema: Schema): z.ZodObject<Record<string, z.ZodTypeAny>> {
+  const cached = schemaCache.get(schema)
+  if (cached) return cached
   const shape: Record<string, z.ZodTypeAny> = {}
 
   for (const [key, descriptor] of Object.entries(schema)) {
@@ -88,7 +94,18 @@ export function buildZodSchema(schema: Schema): z.ZodObject<Record<string, z.Zod
     }
   }
 
-  return z.object(shape)
+  const zodObject = z.object(shape)
+  schemaCache.set(schema, zodObject)
+  return zodObject
+}
+
+/**
+ * Redacts the actual env value from a Zod error message for sensitive fields.
+ * Replaces any occurrence of the raw value with [REDACTED].
+ */
+function redactErrorMessage(message: string, rawValue: string | undefined): string {
+  if (rawValue === undefined || rawValue === '') return message
+  return message.split(rawValue).join('[REDACTED]')
 }
 
 /**
@@ -103,10 +120,15 @@ export function validate<S extends Schema>(
   const result = zodSchema.safeParse(env)
 
   if (!result.success) {
-    const failures: ValidationFailure[] = result.error.issues.map((issue) => ({
-      variable: issue.path[0]?.toString() ?? 'unknown',
-      reason: issue.message,
-    }))
+    const failures: ValidationFailure[] = result.error.issues.map((issue) => {
+      const variable = issue.path[0]?.toString() ?? 'unknown'
+      const descriptor = schema[variable] as Schema[string] | undefined
+      const isSensitive = descriptor?.sensitive === true
+      const reason = isSensitive
+        ? redactErrorMessage(issue.message, env[variable])
+        : issue.message
+      return { variable, reason }
+    })
     throw new EnvValidationError(failures)
   }
 
