@@ -1,5 +1,7 @@
 # EnvZen
 
+![EnvZen](./envzen.png)
+
 [![npm](https://img.shields.io/npm/v/envzen-core)](https://www.npmjs.com/package/envzen-core)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5%2B-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
