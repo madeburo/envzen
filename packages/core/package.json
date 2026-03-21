@@ -1,17 +1,17 @@
 {
-  "name": "@envguard/core",
+  "name": "@envshield/core",
   "version": "0.1.1",
   "description": "Type-safe environment variable validation engine",
   "license": "MIT",
-  "author": "EnvGuard Contributors",
-  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/core#readme",
+  "author": "EnvShield Contributors",
+  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/core#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envguard.git",
+    "url": "https://github.com/madeburo/envshield.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envguard/issues"
+    "url": "https://github.com/madeburo/envshield/issues"
   },
   "keywords": [
     "env",

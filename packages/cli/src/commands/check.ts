@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Schema, FieldType } from '@envguard/core'
-import { buildZodSchema } from '@envguard/core'
+import type { Schema, FieldType } from '@envshield/core'
+import { buildZodSchema } from '@envshield/core'
 import { resolveSchema } from '../utils/resolveSchema.js'
 
 export interface CheckOptions {
@@ -148,7 +148,7 @@ export async function checkCommand(opts: CheckOptions): Promise<void> {
 
   if (!existsSync(envPath)) {
     process.stderr.write(
-      `envguard: cannot find .env file.\n  Searched: ${envPath}\n  Use --env <path> to specify a different location.\n`
+      `envshield: cannot find .env file.\n  Searched: ${envPath}\n  Use --env <path> to specify a different location.\n`
     )
     process.exit(1)
   }
@@ -165,11 +165,11 @@ export async function checkCommand(opts: CheckOptions): Promise<void> {
 
   // 5. Output results
   if (!hasFailures) {
-    process.stdout.write('envguard: all checks passed.\n')
+    process.stdout.write('envshield: all checks passed.\n')
     process.exit(0)
   }
 
   const output = formatDiff(diff)
-  process.stdout.write(`envguard check failed:\n${output}\n`)
+  process.stdout.write(`envshield check failed:\n${output}\n`)
   process.exit(1)
 }

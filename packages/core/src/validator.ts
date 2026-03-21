@@ -8,7 +8,7 @@ export { formatErrors }
 const schemaCache = new WeakMap<Schema, z.ZodObject<Record<string, z.ZodTypeAny>>>()
 
 /**
- * Builds a Zod object schema from an envguard Schema definition.
+ * Builds a Zod object schema from an envshield Schema definition.
  * Applies coercion rules per field type and handles required/default/optional.
  * Results are cached per schema object reference via WeakMap.
  */

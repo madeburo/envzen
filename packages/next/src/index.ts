@@ -1,5 +1,5 @@
-import { createEnv } from '@envguard/core'
-import type { Schema } from '@envguard/core'
+import { createEnv } from '@envshield/core'
+import type { Schema } from '@envshield/core'
 
 // Minimal NextConfig type compatible with next.config.ts
 // Using a structural type so `next` doesn't need to be installed at type-check time

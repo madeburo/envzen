@@ -1,4 +1,4 @@
-# Contributing to EnvGuard
+# Contributing to EnvShield
 
 Thanks for taking the time to contribute. This document covers how to get set up, the project conventions, and the process for submitting changes.
 
@@ -10,8 +10,8 @@ Thanks for taking the time to contribute. This document covers how to get set up
 ## Setup
 
 ```bash
-git clone https://github.com/madeburo/envguard.git
-cd envguard
+git clone https://github.com/madeburo/envshield.git
+cd envshield
 pnpm install
 pnpm build
 pnpm test
@@ -21,15 +21,15 @@ pnpm test
 
 ```
 packages/
-  core/     # @envguard/core — validation engine (Zod-based)
-  cli/      # @envguard/cli — check / sync / init commands
-  express/  # @envguard/express — Express/Fastify middleware
-  vite/     # @envguard/vite — Vite plugin
-  next/     # @envguard/next — Next.js withEnvGuard() wrapper
-  nestjs/   # @envguard/nestjs — NestJS EnvGuardModule
+  core/     # @envshield/core — validation engine (Zod-based)
+  cli/      # @envshield/cli — check / sync / init commands
+  express/  # @envshield/express — Express/Fastify middleware
+  vite/     # @envshield/vite — Vite plugin
+  next/     # @envshield/next — Next.js withEnvGuard() wrapper
+  nestjs/   # @envshield/nestjs — NestJS EnvGuardModule
 ```
 
-All business logic lives in `@envguard/core`. Adapter packages are thin wrappers that call `createEnv()` and re-throw on failure — do not duplicate validation logic in adapters.
+All business logic lives in `@envshield/core`. Adapter packages are thin wrappers that call `createEnv()` and re-throw on failure — do not duplicate validation logic in adapters.
 
 ## Common Commands
 
@@ -40,8 +40,8 @@ pnpm test:coverage   # Run tests with coverage
 pnpm lint            # Type-check (no emit)
 
 # Per-package
-pnpm -F @envguard/core test
-pnpm -F @envguard/core build
+pnpm -F @envshield/core test
+pnpm -F @envshield/core build
 ```
 
 ## Conventions
@@ -82,7 +82,7 @@ Create `packages/cli/src/commands/<name>.ts` exporting a single `<name>Command(o
 ## Reporting Issues
 
 Please include:
-- EnvGuard version(s) affected
+- EnvShield version(s) affected
 - Node.js version
 - Minimal reproduction (schema + env values that trigger the issue)
 - Expected vs actual behavior

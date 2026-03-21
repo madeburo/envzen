@@ -1,6 +1,6 @@
 import { resolve, extname } from 'node:path'
 import { existsSync } from 'node:fs'
-import type { Schema } from '@envguard/core'
+import type { Schema } from '@envshield/core'
 
 const ALLOWED_EXTENSIONS = new Set(['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'])
 
@@ -17,14 +17,14 @@ export async function resolveSchema(schemaFlag?: string): Promise<Schema> {
   const ext = extname(schemaPath).toLowerCase()
   if (!ALLOWED_EXTENSIONS.has(ext)) {
     process.stderr.write(
-      `envguard: unsupported schema file extension "${ext}".\n  Allowed: ${[...ALLOWED_EXTENSIONS].join(', ')}\n`
+      `envshield: unsupported schema file extension "${ext}".\n  Allowed: ${[...ALLOWED_EXTENSIONS].join(', ')}\n`
     )
     process.exit(1)
   }
 
   if (!existsSync(schemaPath)) {
     process.stderr.write(
-      `envguard: cannot find schema file.\n  Searched: ${schemaPath}\n  Use --schema <path> to specify a different location.\n`
+      `envshield: cannot find schema file.\n  Searched: ${schemaPath}\n  Use --schema <path> to specify a different location.\n`
     )
     process.exit(1)
   }
@@ -34,7 +34,7 @@ export async function resolveSchema(schemaFlag?: string): Promise<Schema> {
     mod = await import(schemaPath)
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
-    process.stderr.write(`envguard: failed to import schema file "${schemaPath}".\n  ${message}\n`)
+    process.stderr.write(`envshield: failed to import schema file "${schemaPath}".\n  ${message}\n`)
     process.exit(1)
   }
 
@@ -42,7 +42,7 @@ export async function resolveSchema(schemaFlag?: string): Promise<Schema> {
 
   if (!schema || typeof schema !== 'object') {
     process.stderr.write(
-      `envguard: schema file "${schemaPath}" must export a default export or named "schema" export that is a Schema object.\n`
+      `envshield: schema file "${schemaPath}" must export a default export or named "schema" export that is a Schema object.\n`
     )
     process.exit(1)
   }

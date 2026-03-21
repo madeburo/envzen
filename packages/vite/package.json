@@ -1,20 +1,20 @@
 {
-  "name": "@envguard/vite",
+  "name": "@envshield/vite",
   "version": "0.1.1",
-  "description": "Vite adapter for envguard",
+  "description": "Vite adapter for envshield",
   "license": "MIT",
-  "author": "EnvGuard Contributors",
-  "homepage": "https://github.com/madeburo/envguard/tree/main/packages/vite#readme",
+  "author": "EnvShield Contributors",
+  "homepage": "https://github.com/madeburo/envshield/tree/main/packages/vite#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madeburo/envguard.git",
+    "url": "https://github.com/madeburo/envshield.git",
     "directory": "packages/vite"
   },
   "bugs": {
-    "url": "https://github.com/madeburo/envguard/issues"
+    "url": "https://github.com/madeburo/envshield/issues"
   },
   "keywords": [
-    "envguard",
+    "envshield",
     "vite",
     "plugin",
     "env",
@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@envguard/core": "workspace:*"
+    "@envshield/core": "workspace:*"
   },
   "peerDependencies": {
     "vite": ">=5.0.0"

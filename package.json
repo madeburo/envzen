@@ -1,5 +1,5 @@
 {
-  "name": "envguard",
+  "name": "envshield",
   "private": true,
   "version": "0.1.1",
   "description": "Type-safe environment variable validation library",

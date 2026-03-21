@@ -21,7 +21,7 @@ export interface ValidationFailure {
 
 export function formatErrors(failures: ValidationFailure[]): string {
   const lines = failures.map((f) => `  ${f.variable}: ${f.reason}`).join('\n')
-  return `EnvGuard validation failed (${failures.length} error${failures.length === 1 ? '' : 's'}):\n${lines}`
+  return `EnvShield validation failed (${failures.length} error${failures.length === 1 ? '' : 's'}):\n${lines}`
 }
 
 export class EnvValidationError extends Error {

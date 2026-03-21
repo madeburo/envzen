@@ -1,7 +1,7 @@
-# EnvGuard
+# EnvShield
 
-[![npm](https://img.shields.io/npm/v/@envguard/core)](https://www.npmjs.com/package/@envguard/core)
-[![CI](https://img.shields.io/github/actions/workflow/status/madeburo/envguard/ci.yml?label=CI)](https://github.com/madeburo/envguard/actions)
+[![npm](https://img.shields.io/npm/v/@envshield/core)](https://www.npmjs.com/package/@envshield/core)
+[![CI](https://img.shields.io/github/actions/workflow/status/madeburo/envshield/ci.yml?label=CI)](https://github.com/madeburo/envshield/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5%2B-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-f69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -20,34 +20,34 @@ Type-safe environment variable validation for TypeScript/Node.js. Validates `pro
 
 | Package | Description |
 |---|---|
-| `@envguard/core` | Validation engine, types, masker, printer |
-| `@envguard/cli` | `envguard check / sync / init` CLI |
-| `@envguard/express` | Express / Fastify middleware |
-| `@envguard/vite` | Vite plugin |
-| `@envguard/next` | Next.js `withEnvGuard()` wrapper |
-| `@envguard/nestjs` | NestJS `EnvGuardModule.forRoot()` |
+| `@envshield/core` | Validation engine, types, masker, printer |
+| `@envshield/cli` | `envshield check / sync / init` CLI |
+| `@envshield/express` | Express / Fastify middleware |
+| `@envshield/vite` | Vite plugin |
+| `@envshield/next` | Next.js `withEnvGuard()` wrapper |
+| `@envshield/nestjs` | NestJS `EnvGuardModule.forRoot()` |
 
 ## Installation
 
 ```bash
 # Core only
-npm install @envguard/core
+npm install @envshield/core
 
 # With a framework adapter
-npm install @envguard/core @envguard/express
-npm install @envguard/core @envguard/vite
-npm install @envguard/core @envguard/next
-npm install @envguard/core @envguard/nestjs
+npm install @envshield/core @envshield/express
+npm install @envshield/core @envshield/vite
+npm install @envshield/core @envshield/next
+npm install @envshield/core @envshield/nestjs
 
 # CLI (global or dev dependency)
-npm install -g @envguard/cli
+npm install -g @envshield/cli
 ```
 
 ## Quick Start
 
 ```ts
 // env.ts
-import { createEnv } from '@envguard/core'
+import { createEnv } from '@envshield/core'
 
 export const env = createEnv({
   NODE_ENV: {
@@ -72,7 +72,7 @@ export const env = createEnv({
 })
 ```
 
-Call `dotenv.config()` before `createEnv()` if you load from a `.env` file — EnvGuard does not load `.env` files itself.
+Call `dotenv.config()` before `createEnv()` if you load from a `.env` file — EnvShield does not load `.env` files itself.
 
 ```ts
 // index.ts
@@ -116,20 +116,18 @@ console.log(JSON.stringify(env)) // DATABASE_URL and API_KEY → "[REDACTED]"
 
 ```ts
 import express from 'express'
-import { envGuardMiddleware } from '@envguard/express'
+import { envGuardMiddleware } from '@envshield/express'
 import { schema } from './env.js'
 
 const app = express()
 app.use(envGuardMiddleware(schema))
 ```
 
-Validation runs on the first request. On failure, the error is forwarded to your framework's error handler via `next(err)`.
-
 ### Vite
 
 ```ts
 // vite.config.ts
-import { envGuardPlugin } from '@envguard/vite'
+import { envGuardPlugin } from '@envshield/vite'
 import { schema } from './env.js'
 
 export default {
@@ -137,13 +135,11 @@ export default {
 }
 ```
 
-Validation runs in the `buildStart` hook, halting Vite on failure.
-
 ### Next.js
 
 ```ts
 // next.config.ts
-import { withEnvGuard } from '@envguard/next'
+import { withEnvGuard } from '@envshield/next'
 import { schema } from './env.js'
 
 export default withEnvGuard({ /* your next config */ }, schema)
@@ -152,7 +148,7 @@ export default withEnvGuard({ /* your next config */ }, schema)
 ### NestJS
 
 ```ts
-import { EnvGuardModule } from '@envguard/nestjs'
+import { EnvGuardModule } from '@envshield/nestjs'
 import { schema } from './env.js'
 
 @Module({
@@ -165,25 +161,25 @@ export class AppModule {}
 
 ```bash
 # Scaffold an env.ts config file
-envguard init
+envshield init
 
 # Generate .env.example from your schema
-envguard sync --schema ./env.ts
+envshield sync --schema ./env.ts
 
 # Diff your .env against the schema
-envguard check --schema ./env.ts --env ./.env
+envshield check --schema ./env.ts --env ./.env
 
 # CI mode (no interactive prompts, plain-text output)
-envguard init --ci
-envguard check --ci
+envshield init --ci
+envshield check --ci
 ```
 
-`envguard init --ci` also generates a `.github/workflows/envguard.yml` GitHub Actions workflow.
+`envshield init --ci` also generates a `.github/workflows/envshield.yml` GitHub Actions workflow.
 
 ## Error Handling
 
 ```ts
-import { createEnv, EnvValidationError } from '@envguard/core'
+import { createEnv, EnvValidationError } from '@envshield/core'
 
 try {
   const env = createEnv(schema)
@@ -198,16 +194,9 @@ try {
 ## Development
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Build all packages
 pnpm build
-
-# Run all tests
 pnpm test
-
-# Type-check
 pnpm lint
 ```
 

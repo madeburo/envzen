@@ -1,7 +1,7 @@
 import type { DynamicModule } from '@nestjs/common'
 import { Module } from '@nestjs/common'
-import { createEnv } from '@envguard/core'
-import type { Schema } from '@envguard/core'
+import { createEnv } from '@envshield/core'
+import type { Schema } from '@envshield/core'
 
 @Module({})
 export class EnvGuardModule {
