@@ -1,38 +1,18 @@
 import type { Schema, FieldType, EnvObject } from './types'
 import { EnvValidationError, ValidationFailure } from './types'
-import { buildZodSchema, formatErrors } from './validator'
+import { buildZodSchema, formatErrors, redactErrorMessage } from './validator'
 import { getSafeEnv } from './masker'
 
 export * from './types'
 export * from './masker'
-export { formatErrors, buildZodSchema } from './validator'
+export { formatErrors, buildZodSchema, redactErrorMessage } from './validator'
 export { printEnvExample } from './printer'
 
 const VALID_FIELD_TYPES: ReadonlySet<FieldType> = new Set([
   'string', 'number', 'boolean', 'url', 'port', 'email', 'enum',
 ])
 
-export interface CreateEnvOptions {
-  // Reserved for future use (e.g., envFile loading opt-in)
-}
-
-/**
- * Redacts the actual env value from a Zod error message for sensitive fields.
- */
-function redactErrorMessage(message: string, rawValue: string | undefined): string {
-  if (rawValue === undefined || rawValue === '') return message
-  return message.split(rawValue).join('[REDACTED]')
-}
-
-/**
- * Validates process.env against the given schema.
- * Returns a typed, readonly env object with a `toJSON()` override that redacts
- * sensitive fields when the object is serialized via JSON.stringify.
- *
- * Note: createEnv does NOT load any .env file. Callers must invoke
- * dotenv.config() (or equivalent) before calling createEnv.
- */
-export function createEnv<S extends Schema>(schema: S, _options?: CreateEnvOptions): EnvObject<S> {
+export function createEnv<S extends Schema>(schema: S): EnvObject<S> {
   for (const [key, desc] of Object.entries(schema) as [string, Schema[string]][]) {
     // Guard: reject unknown field types
     if (!VALID_FIELD_TYPES.has(desc.type)) {
@@ -62,14 +42,17 @@ export function createEnv<S extends Schema>(schema: S, _options?: CreateEnvOptio
     throw new EnvValidationError(failures)
   }
 
-  const envObject = Object.assign(Object.create(null), result.data) as EnvObject<S> & {
-    toJSON(): Record<string, string>
-  }
+  const envObject = Object.assign(Object.create(null), result.data) as EnvObject<S>
 
-  envObject.toJSON = function () {
-    return getSafeEnv(envObject, schema) as Record<string, string>
-  }
+  Object.defineProperty(envObject, 'toJSON', {
+    value() {
+      return getSafeEnv(envObject, schema) as Record<string, string>
+    },
+    enumerable: false,
+    configurable: false,
+    writable: false,
+  })
 
-  return envObject
+  return Object.freeze(envObject)
 }
 

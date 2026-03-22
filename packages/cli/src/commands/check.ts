@@ -42,11 +42,17 @@ function parseEnvFile(content: string): Map<string, string> {
 
     let value = line.slice(eqIdx + 1).trim()
 
-    // Strip inline comments (only outside quotes)
-    // Strip surrounding quotes
-    if ((value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))) {
+    // Strip surrounding quotes first, then inline comments for unquoted values
+    if (value.length >= 2 &&
+        ((value.startsWith('"') && value.endsWith('"')) ||
+         (value.startsWith("'") && value.endsWith("'")))) {
       value = value.slice(1, -1)
+    } else {
+      // Strip inline comments (only outside quotes)
+      const hashIdx = value.indexOf(' #')
+      if (hashIdx !== -1) {
+        value = value.slice(0, hashIdx).trimEnd()
+      }
     }
 
     map.set(key, value)
@@ -85,6 +91,7 @@ export function computeDiff(schema: Schema, envMap: Map<string, string>): DiffRe
     if (!envKeys.has(key)) continue // already in missing
 
     const descriptor = schema[key]
+    if (!descriptor) continue
     const rawValue = envMap.get(key)
 
     // Build a single-field parse to check type

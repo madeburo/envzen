@@ -14,13 +14,11 @@ export function envGuardMiddleware(schema: Schema) {
   let validated = false
 
   return function middleware(
-    req: unknown,
-    res: unknown,
+    _req: unknown,
+    _res: unknown,
     next: (err?: unknown) => void,
   ): void {
     if (!validated) {
-      // Throws EnvValidationError on failure — propagated via next(err) to the
-      // framework's error handler, preventing request processing.
       try {
         createEnv(schema)
         validated = true

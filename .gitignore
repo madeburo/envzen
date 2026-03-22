@@ -20,6 +20,3 @@ Thumbs.db
 
 # Editor
 *.tsbuildinfo
-
-# Test files
-*.test.ts

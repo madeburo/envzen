@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import type { Schema, EnvObject, ValidationFailure } from './types'
+import type { Schema, FieldDescriptor, FieldType, EnvObject, ValidationFailure } from './types'
 import { EnvValidationError, formatErrors } from './types'
 
 export { formatErrors }
@@ -17,8 +17,10 @@ export function buildZodSchema(schema: Schema): z.ZodObject<Record<string, z.Zod
   if (cached) return cached
   const shape: Record<string, z.ZodTypeAny> = {}
 
-  for (const [key, descriptor] of Object.entries(schema)) {
-    const { type, required, default: defaultValue, validate, values } = descriptor
+  for (const [key, rawDescriptor] of Object.entries(schema)) {
+    const descriptor = rawDescriptor as FieldDescriptor
+    const { required, default: defaultValue, validate, values } = descriptor
+    const type: FieldType = descriptor.type
 
     // Build the base Zod type for this field
     let fieldSchema: z.ZodTypeAny
@@ -67,8 +69,10 @@ export function buildZodSchema(schema: Schema): z.ZodObject<Record<string, z.Zod
         break
       }
 
-      default:
-        fieldSchema = z.string()
+      default: {
+        // Runtime guard — TypeScript should never reach here if all FieldType cases are handled above
+        throw new Error(`Unknown field type: "${String(type)}"`)
+      }
     }
 
     // Chain custom validate refinement if provided
@@ -103,7 +107,7 @@ export function buildZodSchema(schema: Schema): z.ZodObject<Record<string, z.Zod
  * Redacts the actual env value from a Zod error message for sensitive fields.
  * Replaces any occurrence of the raw value with [REDACTED].
  */
-function redactErrorMessage(message: string, rawValue: string | undefined): string {
+export function redactErrorMessage(message: string, rawValue: string | undefined): string {
   if (rawValue === undefined || rawValue === '') return message
   return message.split(rawValue).join('[REDACTED]')
 }

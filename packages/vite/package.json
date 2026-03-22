@@ -1,6 +1,6 @@
 {
   "name": "envzen-vite",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Vite adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",

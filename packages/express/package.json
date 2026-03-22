@@ -1,6 +1,6 @@
 {
   "name": "envzen-express",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Express/Fastify adapter for envzen",
   "license": "MIT",
   "author": "EnvZen Contributors",

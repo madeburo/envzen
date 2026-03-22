@@ -1,6 +1,6 @@
 {
   "name": "envzen-cli",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "CLI tool for envzen — sync, check, init",
   "license": "MIT",
   "author": "EnvZen Contributors",
